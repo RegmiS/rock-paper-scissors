@@ -6,7 +6,6 @@ function getComputerChoice(){
 
 function playRound(playerSelection, computerSelection) {
     let playerChoice = playerSelection.toString().trim().toLowerCase();
-    console.log("player choice " + playerChoice);
     if(playerChoice == "rock"){
         if(computerSelection == "Scissors"){
             return true;
@@ -27,9 +26,18 @@ function playRound(playerSelection, computerSelection) {
     }
     return false;
 }
-   
-const playerSelection = "paper";
-const computerSelection = getComputerChoice();
-console.log("player picked " + playerSelection);
-console.log(computerSelection);
-console.log(playRound(playerSelection, computerSelection));
+
+function game(){
+    for(i =0; i<5; i++){
+        let player_choice = prompt("Choose rock, paper, or scissors");
+        const computerSelection = getComputerChoice();
+        let result = playRound(player_choice, computerSelection)
+        let output = (result) ? 
+            `Congrats! You won since you chose ${player_choice}, and the computer selected ${computerSelection}`:
+            `Sorry! You lost since you chose ${player_choice}, and the computer selected ${computerSelection}`;
+        console.log(output);
+    }
+    
+}
+
+game();
