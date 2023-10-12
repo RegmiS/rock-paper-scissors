@@ -27,7 +27,10 @@ function playRound(playerSelection, computerSelection) {
     return false;
 }
 
+let wins = 0;
+
 function game(){
+    
     for(i =0; i<5; i++){
         let player_choice = prompt("Choose rock, paper, or scissors");
         const computerSelection = getComputerChoice();
