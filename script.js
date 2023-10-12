@@ -61,4 +61,8 @@ function player_win(winLose, playerPick, computerPick){
     }
     computerResultText.textContent = `You ${result}! You chose ${playerPick} and the computer picked ${computerPick}`;
     text_wins.textContent = `You have won ${wins} times`;
+
+    if(wins == 5){
+        alert("You have arrived at 5 points! Congrats!");
+    }
 }
