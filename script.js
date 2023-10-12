@@ -29,18 +29,36 @@ function playRound(playerSelection, computerSelection) {
 
 let wins = 0;
 
-function game(){
-    
-    for(i =0; i<5; i++){
-        let player_choice = prompt("Choose rock, paper, or scissors");
-        const computerSelection = getComputerChoice();
-        let result = playRound(player_choice, computerSelection)
-        let output = (result) ? 
-            `Congrats! You won since you chose ${player_choice}, and the computer selected ${computerSelection}`:
-            `Sorry! You lost since you chose ${player_choice}, and the computer selected ${computerSelection}`;
-        console.log(output);
-    }
-    
-}
+const button_rock = document.querySelector("#rock");
+const button_paper = document.querySelector("#paper");
+const button_scissors = document.querySelector("#scissors");
+const computerResultText = document.querySelector("#computer_choice");
+const text_wins = document.querySelector("#rounds");
 
-game();
+button_rock.addEventListener('click', () => {
+    let computerChoiceResult = getComputerChoice();
+    let result = playRound("rock", computerChoiceResult);
+    player_win(result, "rock", computerChoiceResult);
+});
+
+button_paper.addEventListener('click', () => {
+    let computerChoiceResult = getComputerChoice();
+    let result = playRound("paper", computerChoiceResult);
+    player_win(result, "paper", computerChoiceResult);
+});
+
+button_scissors.addEventListener('click', () => {
+    let computerChoiceResult = getComputerChoice();
+    let result = playRound("scissors", computerChoiceResult);
+    player_win(result, "scissors", computerChoiceResult);
+});
+
+function player_win(winLose, playerPick, computerPick){
+    let result = "lose";
+    if(winLose){
+        wins++;
+        result = "win";
+    }
+    computerResultText.textContent = `You ${result}! You chose ${playerPick} and the computer picked ${computerPick}`;
+    text_wins.textContent = `You have won ${wins} times`;
+}
